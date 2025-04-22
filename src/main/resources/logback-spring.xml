@@ -13,7 +13,7 @@
 
     <!-- Logstash Appender -->
     <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>logstash:5000</destination>
+        <destination>host.docker.internal:5000</destination>
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
             <customFields>{"app":"${appName}","env":"${spring.profiles.active}"}</customFields>
         </encoder>

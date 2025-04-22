@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: cdp
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: cdp-group
+      auto-offset-reset: earliest
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+server:
+  port: 9001
+
+features:
+  authentication:
+    enabled: false
+  monitoring:
+    prometheus:
+      enabled: true
+    grafana:
+      enabled: true
+  database:
+    maria-db:
+      enabled: true
+  rate-limiting:
+    enabled: true
+  security:
+    enabled: true
+  monitoring-dashboards:
+    enabled: true
+
+logging:
+  level:
+    root: INFO
+    com.cdp: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/application.log 

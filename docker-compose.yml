@@ -11,9 +11,13 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - SPRING_KAFKA_BOOTSTRAP-SERVERS=kafka:29092
+      - SPRING_DATASOURCE_URL=jdbc:mariadb://localhost:3306/adp
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=Dreamer@1
     depends_on:
       - prometheus
       - kafka
+      #- mysql
     networks:
       - monitoring-network
 
@@ -160,6 +164,8 @@ services:
 
 volumes:
   esdata:
+    driver: local
+  mysql_data:
     driver: local
 
 networks:
